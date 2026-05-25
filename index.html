@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>椿 TSUBAKI — 整いの儀｜頭浴・髪・着付け・結い</title>
+  <meta name="description" content="茶室の延長線にある総合美容サロン 椿 TSUBAKI。頭浴の儀・髪の儀・纏いの儀・結いの儀を、一連の整いの儀として承ります。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@300;400;500;700&family=Yuji+Syuku&family=Noto+Sans+JP:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :where(html,body){
+      line-break:strict;
+      word-break:normal;
+      overflow-wrap:break-word;
+      hanging-punctuation:allow-end;
+    }
+    :where(h1,h2,h3,h4,p,li,dt,dd,figcaption,blockquote,a,span,small,strong,em){
+      line-break:strict;
+      word-break:auto-phrase;
+      overflow-wrap:break-word;
+    }
+    :where(h1,h2,h3,h4,[class*=title],[class*=brand],[class*=label]){text-wrap:balance}
+    :where(p,li,dd,figcaption){text-wrap:pretty}
+
+    :root{
+      /* 墨・鶸萌黄・生成り・銀朱・利休鼠 */
+      --sumi:       #1a1614;
+      --sumi-asa:   #2b2521;
+      --hiwa:       #7a8c5e;
+      --hiwa-fukai: #5a6b48;
+      --kinari:     #ebe2d2;
+      --washi:      #f1ebde;
+      --shu:        #a85e4a;
+      --shu-fukai:  #8a4838;
+      --rikyu:      #888573;
+      --yuge:       #ffffff;
+
+      /* 書体 */
+      --font-mei:    'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+      --font-shuku:  'Yuji Syuku', 'Shippori Mincho B1', serif;
+      --font-honbun: 'Noto Sans JP', 'Inter', system-ui, sans-serif;
+      --font-latin:  'Inter', 'Helvetica Neue', sans-serif;
+
+      /* 字組み */
+      --leading-body:   2.0;
+      --leading-mincho: 1.8;
+      --tracking-mei:   0.12em;
+      --tracking-shuku: 0.08em;
+
+      /* 余白 */
+      --space-xl: clamp(5rem, 9vw, 9rem);
+      --space-lg: clamp(3rem, 6vw, 6rem);
+      --space-md: 1.75rem;
+      --space-sm: 1rem;
+
+      --rule:     1px solid rgba(26,22,20,.18);
+      --rule-shu: 1px solid var(--shu);
+      --rule-rikyu: 1px solid var(--rikyu);
+    }
+
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{
+      background:var(--kinari);
+      color:var(--sumi);
+      font-family:var(--font-honbun);
+      font-weight:400;
+      line-height:var(--leading-body);
+      letter-spacing:.04em;
+      font-variant-numeric:lining-nums proportional-nums;
+      overflow-x:hidden;
+      position:relative;
+    }
+    /* 和紙ノイズ — 控えめに */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+      mix-blend-mode:multiply;
+      opacity:.16;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    @media (max-width: 768px){
+      body{font-weight:400;line-height:clamp(1.7,2.2vw,2.0)}
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+
+    *:focus-visible{
+      outline:2px solid var(--hiwa);
+      outline-offset:4px;
+      border-radius:2px;
+    }
+
+    /* 見出し共通 */
+    h1,h2,h3,h4{
+      font-family:var(--font-mei);
+      font-weight:300;
+      letter-spacing:var(--tracking-mei);
+    }
+    @media (max-width: 768px){
+      h1,h2,h3,h4{font-weight:400}
+    }
+
+    .num{font-variant-numeric:tabular-nums lining-nums}
+    .nowrap{white-space:nowrap}
+
+    main{position:relative;z-index:2}
+
+    /* ─── ヘッダー ─── */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1.4rem clamp(1.2rem,4vw,3rem);
+      border-bottom:var(--rule);
+      background:rgba(235,226,210,.92);
+      backdrop-filter:saturate(110%) blur(8px);
+      -webkit-backdrop-filter:saturate(110%) blur(8px);
+      position:sticky;top:0;z-index:50;
+    }
+    .brand{
+      font-family:var(--font-mei);
+      font-weight:500;
+      font-size:clamp(1.3rem,2.1vw,1.7rem);
+      letter-spacing:.24em;
+      line-height:1.1;
+      white-space:nowrap;
+      color:var(--sumi);
+      display:flex;
+      align-items:baseline;
+      gap:1rem;
+    }
+    .brand small{
+      font-family:var(--font-latin);
+      font-size:.5em;
+      font-weight:400;
+      letter-spacing:.4em;
+      color:var(--rikyu);
+    }
+    nav{display:flex;align-items:center;gap:clamp(1rem,2vw,2rem)}
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:0;
+      font-family:var(--font-mei);
+      font-size:.84rem;
+      letter-spacing:.28em;
+    }
+    nav li{
+      padding:0 clamp(.7rem,1.5vw,1.3rem);
+      border-right:1px solid rgba(26,22,20,.22);
+    }
+    nav li:last-child{border-right:none;padding-right:0}
+    nav li:first-child{padding-left:0}
+    nav a{position:relative;padding:.2em 0;color:var(--sumi);transition:color .3s ease}
+    nav a:hover{color:var(--hiwa)}
+    @media (max-width:840px){
+      nav ul{display:none}
+    }
+
+    /* 季語バッジ */
+    .kigo{
+      font-family:var(--font-mei);
+      font-size:.72rem;
+      letter-spacing:.26em;
+      color:var(--shu);
+      padding:.45rem .9rem;
+      border:1px solid var(--shu);
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:.6em;
+      background:rgba(168,94,74,.04);
+    }
+    .kigo b{font-weight:400;letter-spacing:.32em}
+    .kigo .dot{
+      width:4px;height:4px;border-radius:50%;
+      background:var(--shu);
+      display:inline-block;
+    }
+    @media (max-width:520px){
+      .kigo{font-size:.66rem;letter-spacing:.18em;padding:.35rem .7rem}
+    }
+
+    /* ─── ヒーロー ─── */
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(240px,.5fr) 1fr;
+      gap:clamp(2rem,5vw,5rem);
+      padding:clamp(3rem,7vw,6rem) clamp(1.2rem,4vw,3rem) clamp(4rem,9vw,7rem);
+      align-items:center;
+      overflow:hidden;
+      min-height:min(82vh, 780px);
+    }
+    @media(max-width:840px){
+      .hero{grid-template-columns:1fr;padding-top:clamp(2.5rem,6vw,5rem);min-height:auto}
+    }
+    .hero-image{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+    }
+    .hero-image img{
+      width:100%;height:100%;object-fit:cover;
+      filter:grayscale(.35) contrast(.92) brightness(.95);
+      opacity:.32;
+    }
+    .hero-image::after{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse at 25% 38%, rgba(255,255,255,.45), transparent 55%),
+        linear-gradient(180deg, rgba(235,226,210,.4), rgba(235,226,210,.85) 80%, rgba(235,226,210,.96));
+    }
+    /* 障子越しの光の縦線 */
+    .shoji-lines{
+      position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:
+        linear-gradient(90deg, transparent 0%, transparent calc(33% - 1px), rgba(26,22,20,.07) calc(33%), transparent calc(33% + 1px), transparent calc(66% - 1px), rgba(26,22,20,.07) calc(66%), transparent calc(66% + 1px), transparent 100%);
+      opacity:0;
+      animation:shojiFade 2.4s ease-out 0.4s forwards;
+    }
+    @keyframes shojiFade{from{opacity:0}to{opacity:1}}
+
+    .hero-tate{
+      writing-mode:vertical-rl;
+      -webkit-writing-mode:vertical-rl;
+      text-orientation:mixed;
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(2.4rem,4.6vw,3.8rem);
+      line-height:1.85;
+      letter-spacing:.42em;
+      color:var(--sumi);
+      margin-left:auto;
+      max-height:min(72vh,640px);
+      position:relative;
+      z-index:3;
+    }
+    .hero-tate .kanji{
+      font-size:1.35em;
+      display:block;
+      line-height:1.25;
+      white-space:nowrap;
+      word-break:keep-all;
+      overflow-wrap:normal;
+    }
+    .hero-tate .sub{
+      font-size:.4em;
+      letter-spacing:.55em;
+      color:var(--shu);
+      margin-top:1.8em;
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:400;
+    }
+    @media(max-width:840px){
+      .hero-tate{
+        writing-mode:horizontal-tb;
+        max-height:none;
+        margin:0;
+        font-size:clamp(2.2rem,7vw,3rem);
+        letter-spacing:.2em;
+        line-height:1.5;
+      }
+      .hero-tate .sub{margin-top:1em;letter-spacing:.35em;color:var(--shu)}
+    }
+
+    .hero-body{position:relative;z-index:3;max-width:42rem}
+    .hero-body .eyebrow{
+      font-family:var(--font-shuku);
+      font-size:.85rem;
+      letter-spacing:.42em;
+      color:var(--hiwa-fukai);
+      margin-bottom:1.6rem;
+      display:block;
+    }
+    .hero-body h1{
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(2.1rem,5.4vw,3.8rem);
+      line-height:1.45;
+      letter-spacing:.14em;
+      margin-bottom:clamp(1.5rem,3vw,2.5rem);
+    }
+    @media (max-width: 768px){
+      .hero-body h1{font-weight:400}
+    }
+    .hero-body p.lead{
+      font-size:clamp(.95rem,1.3vw,1.05rem);
+      max-width:36em;
+      color:var(--sumi-asa);
+      line-height:var(--leading-body);
+      font-weight:400;
+    }
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem 2.4rem;
+      margin-top:clamp(2.2rem,4.5vw,3.6rem);
+      padding-top:1.5rem;
+      border-top:var(--rule);
+      font-family:var(--font-mei);
+      font-size:.8rem;
+      letter-spacing:.28em;
+      color:var(--rikyu);
+    }
+    .hero-meta b{
+      color:var(--sumi);
+      font-weight:400;
+      letter-spacing:.16em;
+      margin-left:.8em;
+    }
+
+    /* 店主印 */
+    .seal{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:3.4rem;
+      height:3.4rem;
+      border:1.5px solid var(--shu);
+      border-radius:2px;
+      background:rgba(168,94,74,.05);
+      transform:rotate(-6deg);
+      font-family:var(--font-mei);
+      font-weight:500;
+      font-size:1.6rem;
+      color:var(--shu);
+      letter-spacing:0;
+      line-height:1;
+      flex-shrink:0;
+      transition:transform .8s ease;
+    }
+    .seal:hover{transform:rotate(-3deg) scale(1.04)}
+    .hero-seal{
+      position:absolute;
+      bottom:clamp(2rem,5vw,4rem);
+      right:clamp(1.5rem,4vw,3rem);
+      z-index:3;
+    }
+    @media(max-width:840px){
+      .hero-seal{position:relative;bottom:auto;right:auto;margin-top:2.5rem}
+    }
+
+    /* ─── 章見出し共通 ─── */
+    .section-head{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      align-items:end;
+      gap:clamp(1.4rem,3vw,3rem);
+      padding:clamp(3rem,6vw,5rem) clamp(1.2rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem);
+      border-top:var(--rule);
+    }
+    @media(max-width:840px){
+      .section-head{
+        grid-template-columns:1fr;
+        align-items:flex-start;
+        gap:.6rem;
+      }
+    }
+    /* 章番号（縦組み） */
+    .section-head .ord{
+      writing-mode:vertical-rl;
+      -webkit-writing-mode:vertical-rl;
+      text-orientation:mixed;
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(2.2rem,4vw,3.2rem);
+      color:var(--rikyu);
+      line-height:1;
+      letter-spacing:.08em;
+      white-space:nowrap;
+      align-self:start;
+    }
+    @media(max-width:840px){
+      .section-head .ord{
+        writing-mode:horizontal-tb;
+        font-size:clamp(1.8rem,5vw,2.4rem);
+      }
+    }
+    .section-head .ord::after{
+      content:"";
+      display:block;
+      width:1px;
+      height:1.6em;
+      background:var(--rikyu);
+      margin:.6em auto 0;
+    }
+    @media(max-width:840px){
+      .section-head .ord::after{
+        display:inline-block;
+        width:1.6em;
+        height:1px;
+        margin:0 0 .25em .6em;
+        vertical-align:middle;
+      }
+    }
+    .section-head h2{
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(1.7rem,3.2vw,2.6rem);
+      letter-spacing:.18em;
+      line-height:1.4;
+    }
+    @media (max-width: 768px){
+      .section-head h2{font-weight:400}
+    }
+    .section-head h2 small{
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.36em;
+      letter-spacing:.48em;
+      color:var(--rikyu);
+      margin-top:1em;
+    }
+
+    .section-body{
+      padding:0 clamp(1.2rem,4vw,3rem) clamp(4rem,7vw,7rem);
+    }
+
+    /* ─── 整いの順（フロー） ─── */
+    .flow-intro{
+      max-width:42em;
+      margin:0 auto clamp(2.5rem,5vw,4rem);
+      padding:0 clamp(1.2rem,4vw,3rem);
+      font-family:var(--font-shuku);
+      font-size:clamp(1rem,1.35vw,1.1rem);
+      line-height:2.2;
+      letter-spacing:.1em;
+      text-align:center;
+      color:var(--sumi-asa);
+    }
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:0;
+      align-items:start;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 clamp(1.2rem,4vw,3rem);
+      position:relative;
+    }
+    @media(max-width:840px){
+      .flow{grid-template-columns:1fr;gap:1.4rem}
+    }
+    .step{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:1.2rem .5rem;
+      position:relative;
+    }
+    .step .num{
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:.78rem;
+      letter-spacing:.5em;
+      color:var(--rikyu);
+      margin-bottom:1rem;
+    }
+    .step .circle{
+      width:clamp(4.5rem,8vw,6rem);
+      height:clamp(4.5rem,8vw,6rem);
+      border-radius:50%;
+      background:var(--washi);
+      border:1px solid var(--rikyu);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:1.1rem;
+      position:relative;
+    }
+    .step .circle svg{width:46%;height:46%;color:var(--hiwa-fukai)}
+    .step h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.05rem;
+      letter-spacing:.22em;
+      line-height:1.5;
+      margin-bottom:.4rem;
+      white-space:nowrap;
+    }
+    .step .mins{
+      font-family:var(--font-mei);
+      font-size:.7rem;
+      letter-spacing:.32em;
+      color:var(--rikyu);
+      font-variant-numeric:tabular-nums;
+    }
+    .step:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      top:calc(1.2rem + 1rem + .78rem + clamp(4.5rem,8vw,6rem) / 2);
+      right:-.5em;
+      width:1.6em;
+      height:1px;
+      background:var(--rikyu);
+      transform:translate(50%,-50%);
+      z-index:1;
+    }
+    .step:not(:last-child)::before{
+      content:"・";
+      position:absolute;
+      top:calc(1.2rem + 1rem + .78rem + clamp(4.5rem,8vw,6rem) / 2);
+      right:-.5em;
+      transform:translate(50%, -55%);
+      color:var(--rikyu);
+      font-family:var(--font-mei);
+      font-size:.9rem;
+      z-index:2;
+      line-height:1;
+    }
+    @media(max-width:840px){
+      .step:not(:last-child)::after{
+        top:auto;bottom:-1rem;
+        right:50%;
+        width:1px;height:1.2em;
+        transform:translate(50%,0);
+      }
+      .step:not(:last-child)::before{
+        top:auto;bottom:-1.7rem;
+        right:50%;
+        transform:translate(50%,0);
+      }
+    }
+    .step.last .circle{background:var(--sumi);border-color:var(--sumi)}
+    .step.last .circle svg{color:var(--kinari)}
+
+    /* ─── 品書き（メニュー）─── */
+    .shinagaki{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:0;
+      border-top:var(--rule);
+      border-left:var(--rule);
+    }
+    @media (max-width:840px){
+      .shinagaki{grid-template-columns:1fr}
+    }
+    .gi{
+      padding:clamp(2.2rem,3.6vw,3rem) clamp(1.4rem,3vw,2.4rem);
+      border-right:var(--rule);
+      border-bottom:var(--rule);
+      background:var(--kinari);
+      display:flex;
+      flex-direction:column;
+      gap:1.4rem;
+    }
+    .gi-head{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:1.2rem;
+      padding-bottom:1.2rem;
+      border-bottom:1px dashed var(--rikyu);
+    }
+    .gi-head h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.5rem;
+      letter-spacing:.2em;
+      line-height:1.3;
+      white-space:nowrap;
+    }
+    .gi-head h3 small{
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.5em;
+      letter-spacing:.4em;
+      color:var(--rikyu);
+      margin-top:.6em;
+      letter-spacing:.32em;
+    }
+    .gi-head .no{
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.45em;
+      color:var(--shu);
+      white-space:nowrap;
+    }
+    .gi-body p{
+      font-size:.9rem;
+      line-height:1.95;
+      color:var(--sumi-asa);
+      font-family:var(--font-shuku);
+      letter-spacing:.06em;
+    }
+    .gi ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:.4rem;
+    }
+    .gi li{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      align-items:baseline;
+      gap:.6rem 1rem;
+      padding:.7rem 0;
+      border-bottom:1px dotted rgba(136,133,115,.5);
+      font-size:.92rem;
+      line-height:1.7;
+    }
+    .gi li .name{
+      font-family:var(--font-mei);
+      font-weight:400;
+      letter-spacing:.1em;
+      color:var(--sumi);
+    }
+    .gi li .name small{
+      display:block;
+      font-family:var(--font-shuku);
+      font-weight:400;
+      font-size:.78em;
+      letter-spacing:.06em;
+      color:var(--rikyu);
+      margin-top:.2em;
+      line-height:1.6;
+    }
+    .gi li .time,
+    .gi li .yen{
+      font-family:var(--font-mei);
+      font-variant-numeric:tabular-nums lining-nums;
+      font-size:.85rem;
+      letter-spacing:.14em;
+      color:var(--sumi-asa);
+      white-space:nowrap;
+    }
+    .gi li .time{color:var(--rikyu)}
+
+    /* ─── 閑室（個室）─── */
+    .kanshitsu{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+      gap:clamp(1.8rem,3.5vw,2.6rem);
+    }
+    .room{
+      display:flex;
+      flex-direction:column;
+      background:var(--washi);
+      border:1px solid rgba(26,22,20,.12);
+    }
+    .room-img{
+      aspect-ratio:4/3;
+      overflow:hidden;
+      background:var(--rikyu);
+    }
+    .room-img img{
+      width:100%;height:100%;object-fit:cover;
+      filter:grayscale(.35) contrast(.93);
+      transition:transform 1.4s ease;
+    }
+    .room:hover .room-img img{transform:scale(1.03)}
+    .room-cap{
+      padding:clamp(1.4rem,2.4vw,1.9rem);
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+    }
+    .room-cap .ji{
+      font-family:var(--font-mei);
+      font-size:.74rem;
+      letter-spacing:.5em;
+      color:var(--shu);
+    }
+    .room-cap h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.3rem;
+      letter-spacing:.2em;
+      line-height:1.4;
+    }
+    .room-cap h3 small{
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.55em;
+      letter-spacing:.34em;
+      color:var(--rikyu);
+      margin-top:.55em;
+    }
+    .room-cap p{
+      font-size:.88rem;
+      line-height:1.95;
+      color:var(--sumi-asa);
+      font-family:var(--font-shuku);
+      letter-spacing:.04em;
+    }
+
+    /* ─── 道具と材 ─── */
+    .dougu{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+      gap:clamp(1.6rem,3vw,2.2rem);
+    }
+    .item{
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+    }
+    .item-img{
+      aspect-ratio:1/1;
+      overflow:hidden;
+      background:var(--washi);
+    }
+    .item-img img{
+      width:100%;height:100%;object-fit:cover;
+      filter:grayscale(.45) contrast(.92);
+    }
+    .item h4{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.05rem;
+      letter-spacing:.22em;
+      line-height:1.4;
+      padding-top:.6rem;
+      border-top:1px solid var(--rikyu);
+    }
+    .item h4 small{
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.55em;
+      letter-spacing:.32em;
+      color:var(--rikyu);
+      margin-top:.5em;
+    }
+    .item p{
+      font-size:.85rem;
+      line-height:1.95;
+      color:var(--sumi-asa);
+      font-family:var(--font-shuku);
+      letter-spacing:.05em;
+    }
+
+    /* ─── 結い手 ─── */
+    .yuite{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+      gap:clamp(2rem,4vw,3rem);
+    }
+    .person{display:flex;flex-direction:column}
+    .person-img{
+      aspect-ratio:3/4;
+      overflow:hidden;
+      background:var(--rikyu);
+      margin-bottom:1.4rem;
+    }
+    .person-img img{
+      width:100%;height:100%;object-fit:cover;
+      filter:grayscale(.6) contrast(.92) brightness(.97);
+    }
+    .person .title{
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.45em;
+      color:var(--hiwa-fukai);
+      margin-bottom:.7rem;
+      white-space:nowrap;
+    }
+    .person h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.4rem;
+      letter-spacing:.18em;
+      line-height:1.4;
+      margin-bottom:.3rem;
+    }
+    .person .yomi{
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.78rem;
+      letter-spacing:.3em;
+      color:var(--rikyu);
+      margin-bottom:1.2rem;
+    }
+    .person p{
+      font-size:.88rem;
+      line-height:1.95;
+      color:var(--sumi-asa);
+      font-family:var(--font-honbun);
+      font-weight:400;
+    }
+    .person figcaption{
+      font-family:var(--font-shuku);
+      font-size:.82rem;
+      letter-spacing:.06em;
+      color:var(--rikyu);
+      margin-top:1rem;
+      line-height:1.85;
+    }
+
+    /* ─── ひとひら（随筆） ─── */
+    .hitohira{
+      background:var(--washi);
+      padding:clamp(4rem,7vw,6.5rem) clamp(1.2rem,4vw,3rem);
+      border-top:var(--rule);
+      border-bottom:var(--rule);
+    }
+    .hitohira-grid{
+      max-width:880px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:clamp(3rem,5vw,4.5rem);
+    }
+    .essay{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:clamp(1.5rem,3vw,2.5rem);
+      align-items:start;
+      padding-bottom:clamp(2.5rem,4vw,3.5rem);
+      border-bottom:1px dashed var(--rikyu);
+    }
+    .essay:last-child{border-bottom:none;padding-bottom:0}
+    .essay .sho{
+      writing-mode:vertical-rl;
+      -webkit-writing-mode:vertical-rl;
+      text-orientation:mixed;
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(2rem,3.4vw,2.6rem);
+      color:var(--shu);
+      line-height:1.4;
+      letter-spacing:.1em;
+      white-space:nowrap;
+    }
+    @media (max-width:840px){
+      .essay{grid-template-columns:1fr}
+      .essay .sho{
+        writing-mode:horizontal-tb;
+        font-size:clamp(1.5rem,4vw,1.8rem);
+      }
+    }
+    .essay h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:clamp(1.2rem,1.8vw,1.45rem);
+      letter-spacing:.22em;
+      line-height:1.5;
+      margin-bottom:1.2rem;
+      color:var(--sumi);
+    }
+    .essay p{
+      font-family:var(--font-shuku);
+      font-size:clamp(.95rem,1.25vw,1.02rem);
+      line-height:2.15;
+      letter-spacing:.06em;
+      color:var(--sumi-asa);
+    }
+    .essay p + p{margin-top:1em}
+    .essay .signoff{
+      display:block;
+      margin-top:1.4em;
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.32em;
+      color:var(--rikyu);
+    }
+
+    /* ─── お代（料金） ─── */
+    .odai{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));
+      gap:clamp(1.5rem,3vw,2rem);
+    }
+    .plan{
+      background:var(--washi);
+      border:1px solid rgba(26,22,20,.14);
+      padding:clamp(2rem,3.5vw,2.8rem);
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+    .plan.featured{
+      background:var(--kinari);
+      border-color:var(--hiwa);
+      box-shadow:0 0 0 1px var(--hiwa) inset;
+    }
+    .plan .label{
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.45em;
+      color:var(--shu);
+      margin-bottom:1rem;
+    }
+    .plan h3{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:1.4rem;
+      letter-spacing:.2em;
+      line-height:1.4;
+      margin-bottom:.3rem;
+    }
+    .plan h3 small{
+      display:block;
+      font-family:var(--font-latin);
+      font-weight:300;
+      font-size:.5em;
+      letter-spacing:.34em;
+      color:var(--rikyu);
+      margin-top:.55em;
+    }
+    .plan .price{
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(1.9rem,3.4vw,2.5rem);
+      letter-spacing:.04em;
+      color:var(--sumi);
+      margin:1.4rem 0 .3rem;
+      font-variant-numeric:tabular-nums lining-nums;
+      white-space:nowrap;
+    }
+    .plan .price .yen{font-size:.55em;margin-right:.15em;color:var(--rikyu)}
+    .plan .price .unit{
+      font-size:.4em;
+      color:var(--rikyu);
+      letter-spacing:.2em;
+      margin-left:.4em;
+      font-family:var(--font-latin);
+    }
+    .plan ul{
+      list-style:none;
+      margin:1.4rem 0 2rem;
+      padding-top:1.4rem;
+      border-top:1px solid rgba(26,22,20,.14);
+      flex:1;
+    }
+    .plan li{
+      font-size:.88rem;
+      line-height:1.95;
+      padding:.45rem 0 .45rem 1.2rem;
+      color:var(--sumi-asa);
+      position:relative;
+    }
+    .plan li::before{
+      content:"・";
+      position:absolute;
+      left:0;
+      color:var(--shu);
+    }
+    .plan .gobi{
+      display:inline-block;
+      font-family:var(--font-mei);
+      font-size:.82rem;
+      letter-spacing:.4em;
+      padding:1rem 1.4rem;
+      border:1px solid var(--sumi);
+      color:var(--sumi);
+      text-align:center;
+      transition:all .4s ease;
+      white-space:nowrap;
+    }
+    .plan .gobi:hover{background:var(--sumi);color:var(--kinari)}
+    .plan.featured .gobi{
+      background:var(--hiwa);
+      color:var(--kinari);
+      border-color:var(--hiwa);
+    }
+    .plan.featured .gobi:hover{
+      background:var(--sumi);
+      border-color:var(--sumi);
+    }
+
+    .odai-note{
+      max-width:48em;
+      margin:clamp(2rem,4vw,3rem) auto 0;
+      padding-top:1.5rem;
+      border-top:1px dashed var(--rikyu);
+      font-family:var(--font-shuku);
+      font-size:.85rem;
+      line-height:1.95;
+      letter-spacing:.06em;
+      color:var(--rikyu);
+      text-align:center;
+    }
+
+    /* ─── ご予約 ─── */
+    .goyoyaku{
+      padding:clamp(4rem,7vw,6rem) clamp(1.2rem,4vw,3rem);
+      background:var(--sumi);
+      color:var(--kinari);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .goyoyaku::before{
+      content:"";
+      position:absolute;
+      top:0;left:50%;
+      width:1px;height:clamp(2rem,4vw,3rem);
+      background:var(--shu);
+      transform:translateX(-50%);
+    }
+    .goyoyaku h2{
+      font-family:var(--font-mei);
+      font-weight:300;
+      font-size:clamp(1.8rem,3.8vw,2.7rem);
+      letter-spacing:.24em;
+      line-height:1.6;
+      margin-bottom:1.5rem;
+      color:var(--kinari);
+    }
+    @media (max-width: 768px){
+      .goyoyaku h2{font-weight:400}
+    }
+    .goyoyaku p.invite-lead{
+      max-width:34em;
+      margin:0 auto 2.5rem;
+      font-family:var(--font-shuku);
+      font-size:clamp(.95rem,1.3vw,1.02rem);
+      line-height:2.15;
+      letter-spacing:.05em;
+      color:var(--washi);
+      opacity:.9;
+    }
+    .yoyaku-info{
+      max-width:42em;
+      margin:0 auto 2.5rem;
+      padding:2rem;
+      border:1px solid rgba(235,226,210,.2);
+      text-align:left;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:.9rem 1.6rem;
+      font-family:var(--font-mei);
+      font-size:.88rem;
+      letter-spacing:.14em;
+      line-height:1.9;
+    }
+    .yoyaku-info dt{
+      color:var(--shu);
+      font-size:.78rem;
+      letter-spacing:.32em;
+      padding-top:.15em;
+      white-space:nowrap;
+    }
+    .yoyaku-info dd{
+      color:var(--kinari);
+      font-variant-numeric:tabular-nums lining-nums;
+    }
+    .yoyaku-actions{
+      display:flex;
+      gap:1.5rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .yoyaku-actions a{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:.88rem;
+      letter-spacing:.42em;
+      padding:1.2rem 2.4rem;
+      border:1px solid var(--kinari);
+      color:var(--kinari);
+      display:inline-block;
+      transition:all .5s ease;
+      white-space:nowrap;
+    }
+    .yoyaku-actions a:hover{
+      background:var(--kinari);
+      color:var(--sumi);
+    }
+    .yoyaku-actions a.primary{
+      background:var(--shu);
+      border-color:var(--shu);
+    }
+    .yoyaku-actions a.primary:hover{
+      background:var(--kinari);
+      color:var(--sumi);
+      border-color:var(--kinari);
+    }
+
+    /* ─── フッター ─── */
+    footer{
+      padding:clamp(3rem,5vw,4rem) clamp(1.2rem,4vw,3rem) 2rem;
+      border-top:var(--rule);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:2rem;
+      background:var(--kinari);
+      position:relative;
+    }
+    /* 和ろうそく fade */
+    .candle{
+      position:absolute;
+      top:-3px;left:50%;
+      width:6px;height:14px;
+      background:radial-gradient(ellipse at center, var(--shu) 0%, transparent 70%);
+      transform:translateX(-50%);
+      animation:candleFade 4s ease-in-out infinite;
+    }
+    @keyframes candleFade{
+      0%,100%{opacity:.5}
+      50%{opacity:.95}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .candle{animation:none;opacity:.7}
+    }
+    @media(min-width:780px){
+      footer{grid-template-columns:1fr auto;align-items:end}
+    }
+    footer .brand{font-size:1.15rem}
+    footer .links{
+      display:flex;flex-wrap:wrap;
+      gap:1rem 2.4rem;
+      font-family:var(--font-mei);font-size:.78rem;letter-spacing:.32em;color:var(--rikyu);
+      list-style:none;
+    }
+    footer .copyr{
+      grid-column:1/-1;
+      font-family:var(--font-mei);
+      font-size:.7rem;
+      letter-spacing:.42em;
+      color:var(--rikyu);
+      padding-top:1.5rem;
+      border-top:1px dashed rgba(26,22,20,.14);
+    }
+    footer .copyr .seal{
+      width:2.2rem;height:2.2rem;
+      font-size:1rem;
+      vertical-align:middle;
+      margin-right:1rem;
+    }
+
+    /* アニメーション */
+    @keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    .reveal{animation:fadeup 1.2s cubic-bezier(.2,.7,.2,1) both}
+    .delay-1{animation-delay:.15s}
+    .delay-2{animation-delay:.3s}
+    .delay-3{animation-delay:.45s}
+    .delay-4{animation-delay:.6s}
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{
+        animation-duration:0!important;
+        animation-iteration-count:1!important;
+        transition-duration:0!important;
+      }
+      .shoji-lines{animation:none;opacity:1}
+      .seal{transform:rotate(-6deg)!important}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#" aria-label="椿 TSUBAKI">
+    椿
+    <small>TSUBAKI</small>
+  </a>
+  <nav aria-label="メインナビゲーション">
+    <ul>
+      <li><a href="#junjo">整いの順</a></li>
+      <li><a href="#shinagaki">品書き</a></li>
+      <li><a href="#kanshitsu">閑室</a></li>
+      <li><a href="#dougu">道具と材</a></li>
+      <li><a href="#yuite">結い手</a></li>
+      <li><a href="#odai">お代</a></li>
+    </ul>
+    <span class="kigo" aria-label="現在の節気と七十二候">
+      <span class="dot" aria-hidden="true"></span>
+      <b>立夏</b>
+      蛙始鳴
+    </span>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-image" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1591539320140-aa8c50e44a3a?auto=format&fit=crop&w=1600&q=82" alt="" loading="eager" />
+    </div>
+    <div class="shoji-lines" aria-hidden="true"></div>
+
+    <div class="hero-tate">
+      <span class="kanji">整いの儀</span>
+      <span class="sub">TOTONOI ── THE RITUAL</span>
+    </div>
+
+    <div class="hero-body">
+      <span class="eyebrow">椿 TSUBAKI ── 茶室の延長線にある美容空間</span>
+      <h1 id="hero-title">
+        頭浴 ・ 髪 ・ 着付け ・ 結い。<br>
+        <span class="nowrap">ととのう</span>までの<br>
+        一連の所作を、お預けください。
+      </h1>
+      <p class="lead">
+        派手な煌めきも、急かす言葉も置きません。<br>
+        椿油の薫り、湯気の湿度、障子越しの柔光のなかで、頭皮から髪、衣、結い手の所作までを、一連の<span class="nowrap">「整いの儀」</span>として承ります。
+      </p>
+      <div class="hero-meta">
+        <span>所在<b>京都 ・ 西陣</b></span>
+        <span>開業<b>令和七年 春</b></span>
+        <span>定員<b class="num">一日 八客</b></span>
+      </div>
+    </div>
+
+    <a href="#yoyaku" class="seal hero-seal" aria-label="椿 店主印 — ご予約へ">椿</a>
+  </section>
+
+  <!-- ─── 壹 整いの順 ─── -->
+  <section id="junjo" aria-labelledby="junjo-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">壹</div>
+      <h2 id="junjo-title">
+        整いの順
+        <small>THE ORDER OF RITUAL</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <p class="flow-intro">
+        受付から茶までの六段。<br>
+        急がず、ひと所作ずつ。<br>
+        身体と心を、外の音から少しずつ遠ざけていきます。
+      </p>
+      <ol class="flow" role="list">
+
+        <li class="step">
+          <span class="num">一</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M4 20 L20 20" />
+              <path d="M6 20 L6 10 L18 10 L18 20" />
+              <path d="M12 10 L12 5" />
+              <path d="M9 5 L15 5" />
+            </svg>
+          </div>
+          <h3>受付</h3>
+          <span class="mins">10 分</span>
+        </li>
+
+        <li class="step">
+          <span class="num">二</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M6 4 L18 4 L18 20 L6 20 Z" />
+              <path d="M6 12 L18 12" />
+              <path d="M12 4 L12 12" />
+            </svg>
+          </div>
+          <h3>着替え</h3>
+          <span class="mins">10 分</span>
+        </li>
+
+        <li class="step">
+          <span class="num">三</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M4 14 Q8 10 12 14 T20 14" />
+              <path d="M4 18 Q8 14 12 18 T20 18" />
+              <path d="M4 10 Q8 6 12 10 T20 10" />
+            </svg>
+          </div>
+          <h3>頭浴</h3>
+          <span class="mins">45 分</span>
+        </li>
+
+        <li class="step">
+          <span class="num">四</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M4 4 L4 20" />
+              <path d="M9 4 L9 20" />
+              <path d="M14 4 L14 20" />
+              <path d="M19 4 L19 20" />
+            </svg>
+          </div>
+          <h3>髪</h3>
+          <span class="mins">60 分</span>
+        </li>
+
+        <li class="step">
+          <span class="num">五</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M12 4 Q8 8 12 12 Q16 16 12 20" />
+              <path d="M8 6 Q12 10 16 6" />
+              <path d="M8 18 Q12 14 16 18" />
+            </svg>
+          </div>
+          <h3>結い</h3>
+          <span class="mins">30 分</span>
+        </li>
+
+        <li class="step last">
+          <span class="num">六</span>
+          <div class="circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M6 10 Q6 7 9 7 L15 7 Q18 7 18 10 L18 14 Q18 17 15 17 L9 17 Q6 17 6 14 Z" />
+              <path d="M18 10 L20 10 Q22 10 22 12 Q22 14 20 14 L18 14" />
+              <path d="M10 4 L10 6" />
+              <path d="M14 4 L14 6" />
+            </svg>
+          </div>
+          <h3>茶</h3>
+          <span class="mins">20 分</span>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ─── 貳 品書き ─── -->
+  <section id="shinagaki" aria-labelledby="shinagaki-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">貳</div>
+      <h2 id="shinagaki-title">
+        品書き
+        <small>FOUR RITUALS — MENU</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <div class="shinagaki">
+
+        <article class="gi reveal">
+          <div class="gi-head">
+            <h3>頭浴の儀<small>SCALP &amp; HEADSPA</small></h3>
+            <span class="no">第一の儀</span>
+          </div>
+          <div class="gi-body">
+            <p>椿油で頭皮を解し、湯桶の湯で丁寧に流す。乾燥儀は和ろうそくの灯の下で、ゆるやかに。</p>
+          </div>
+          <ul>
+            <li>
+              <span class="name">椿油の頭浴<small>Camellia Oil Scalp</small></span>
+              <span class="time num">45 分</span>
+              <span class="yen num">¥ 12,000</span>
+            </li>
+            <li>
+              <span class="name">薬草頭浴<small>Herbal Steam Scalp</small></span>
+              <span class="time num">60 分</span>
+              <span class="yen num">¥ 16,000</span>
+            </li>
+            <li>
+              <span class="name">深掘りの頭浴<small>Deep Scalp Ritual</small></span>
+              <span class="time num">90 分</span>
+              <span class="yen num">¥ 22,000</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="gi reveal delay-1">
+          <div class="gi-head">
+            <h3>髪の儀<small>HAIR RITUAL</small></h3>
+            <span class="no">第二の儀</span>
+          </div>
+          <div class="gi-body">
+            <p>髪は梳き、削ぐ前に整える。木櫛で繰り返し梳き、毛流れに沿って鋏を入れます。</p>
+          </div>
+          <ul>
+            <li>
+              <span class="name">梳き整え<small>Cut &amp; Combing</small></span>
+              <span class="time num">60 分</span>
+              <span class="yen num">¥ 14,000</span>
+            </li>
+            <li>
+              <span class="name">墨色染め<small>Sumi Tone Color</small></span>
+              <span class="time num">90 分</span>
+              <span class="yen num">¥ 18,000</span>
+            </li>
+            <li>
+              <span class="name">トリートメント儀<small>Treatment Ritual</small></span>
+              <span class="time num">45 分</span>
+              <span class="yen num">¥ 9,500</span>
+            </li>
+            <li>
+              <span class="name">縮毛矯正<small>Straightening</small></span>
+              <span class="time num">150 分</span>
+              <span class="yen num">¥ 28,000</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="gi reveal delay-2">
+          <div class="gi-head">
+            <h3>纏いの儀<small>KITSUKE — DRESSING</small></h3>
+            <span class="no">第三の儀</span>
+          </div>
+          <div class="gi-body">
+            <p>着付け師が、所作と佇まいに合わせて着丈と帯位置を整えます。式当日朝の特別枠もご用意。</p>
+          </div>
+          <ul>
+            <li>
+              <span class="name">訪問着 ・ 付下げ<small>Visiting Kimono</small></span>
+              <span class="time num">40 分</span>
+              <span class="yen num">¥ 12,000</span>
+            </li>
+            <li>
+              <span class="name">振袖<small>Furisode</small></span>
+              <span class="time num">60 分</span>
+              <span class="yen num">¥ 16,000</span>
+            </li>
+            <li>
+              <span class="name">留袖 ・ 黒留袖<small>Tomesode</small></span>
+              <span class="time num">50 分</span>
+              <span class="yen num">¥ 14,000</span>
+            </li>
+            <li>
+              <span class="name">当日朝のお仕度<small>Morning of the Day</small></span>
+              <span class="time num">90 分</span>
+              <span class="yen num">¥ 28,000</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="gi reveal delay-3">
+          <div class="gi-head">
+            <h3>結いの儀<small>HAIR SETTING</small></h3>
+            <span class="no">第四の儀</span>
+          </div>
+          <div class="gi-body">
+            <p>古典の髷から夜会巻きまで。髪を結う前に、まず頭浴で地を整えることをお勧めしています。</p>
+          </div>
+          <ul>
+            <li>
+              <span class="name">夜会巻き<small>Yakai-maki</small></span>
+              <span class="time num">30 分</span>
+              <span class="yen num">¥ 7,500</span>
+            </li>
+            <li>
+              <span class="name">古典結い<small>Classical Knot</small></span>
+              <span class="time num">45 分</span>
+              <span class="yen num">¥ 11,000</span>
+            </li>
+            <li>
+              <span class="name">花飾り結い<small>Floral Knot</small></span>
+              <span class="time num">60 分</span>
+              <span class="yen num">¥ 14,000</span>
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 參 閑室 ─── -->
+  <section id="kanshitsu" aria-labelledby="kanshitsu-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">參</div>
+      <h2 id="kanshitsu-title">
+        閑室
+        <small>FOUR PRIVATE ROOMS</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <p class="flow-intro">
+        四つの個室は、季を一つずつ宿しています。<br>
+        障子・畳・水屋・銘木 ── どの間も、扉を閉じれば外の音が消えます。
+      </p>
+      <div class="kanshitsu">
+
+        <article class="room reveal">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1531171074112-d1110a2ea3c0?auto=format&fit=crop&w=900&q=80" alt="椿の一輪を生けた床の間のある和室" loading="lazy" />
+          </div>
+          <div class="room-cap">
+            <span class="ji">第一の間</span>
+            <h3>椿の間<small>TSUBAKI ROOM</small></h3>
+            <p>床の間に椿一輪。八畳の主室で、頭浴と結いを通しで承ります。</p>
+          </div>
+        </article>
+
+        <article class="room reveal delay-1">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1545486332-9e0999c535b2?auto=format&fit=crop&w=900&q=80" alt="苔と石の露地のような落ち着いた庭" loading="lazy" />
+          </div>
+          <div class="room-cap">
+            <span class="ji">第二の間</span>
+            <h3>露地の間<small>ROJI ROOM</small></h3>
+            <p>露地の景色を望む間。着付けに適した広間です。</p>
+          </div>
+        </article>
+
+        <article class="room reveal delay-2">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80" alt="苔と緑の壁面、石の落ち着いた色味" loading="lazy" />
+          </div>
+          <div class="room-cap">
+            <span class="ji">第三の間</span>
+            <h3>苔の間<small>KOKE ROOM</small></h3>
+            <p>苔色の壁と檜の床。長時間の頭浴・トリートメント向きの静室。</p>
+          </div>
+        </article>
+
+        <article class="room reveal delay-3">
+          <div class="room-img">
+            <img src="https://images.unsplash.com/photo-1493515322954-4fa727e97985?auto=format&fit=crop&w=900&q=80" alt="月光のような柔らかな間接照明の和室" loading="lazy" />
+          </div>
+          <div class="room-cap">
+            <span class="ji">第四の間</span>
+            <h3>月の間<small>TSUKI ROOM</small></h3>
+            <p>夜半枠専用の小間。和ろうそく一灯と、湯気の気配だけ。</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 肆 道具と材 ─── -->
+  <section id="dougu" aria-labelledby="dougu-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">肆</div>
+      <h2 id="dougu-title">
+        道具と材
+        <small>TOOLS &amp; MATERIALS</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <div class="dougu">
+
+        <figure class="item reveal">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=82" alt="椿油の小瓶と乾いた木の机" loading="lazy" />
+          </div>
+          <h4>椿油<small>CAMELLIA OIL</small></h4>
+          <p>伊豆大島の生搾り。頭皮を解し、髪の表面を一枚薄く守ります。</p>
+        </figure>
+
+        <figure class="item reveal delay-1">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?auto=format&fit=crop&w=600&q=82" alt="木製の櫛が机に置かれた様子" loading="lazy" />
+          </div>
+          <h4>木櫛<small>BOXWOOD COMB</small></h4>
+          <p>奈良の本柘植を職人の手で削り出した櫛。静電気を避け、髪に沿わせます。</p>
+        </figure>
+
+        <figure class="item reveal delay-2">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=82" alt="湯桶から立ち上る湯気のマクロ" loading="lazy" />
+          </div>
+          <h4>湯桶<small>YUOKE — WATER PAIL</small></h4>
+          <p>檜の小桶。湯温は人肌より少し高く、ひと注ぎずつ髪に当てます。</p>
+        </figure>
+
+        <figure class="item reveal delay-3">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1606293459339-aa5d34a7b0e1?auto=format&fit=crop&w=600&q=82" alt="墨と硯のマクロ、書の道具" loading="lazy" />
+          </div>
+          <h4>墨と硯<small>SUMI &amp; INKSTONE</small></h4>
+          <p>受付では墨を一筆。お名前と、その日の願い事を一行だけ書き残します。</p>
+        </figure>
+
+        <figure class="item reveal delay-4">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=600&q=82" alt="和ろうそくの炎の柔らかな揺らぎ" loading="lazy" />
+          </div>
+          <h4>和ろうそく<small>WA-ROUSOKU</small></h4>
+          <p>櫨蝋から成る和ろうそく。施術の合間、灯りはこれ一つで足ります。</p>
+        </figure>
+
+        <figure class="item reveal delay-4">
+          <div class="item-img">
+            <img src="https://images.unsplash.com/photo-1551400412-a64f5fb5e2c4?auto=format&fit=crop&w=600&q=82" alt="水滴と水紋のマクロ、静かな水面" loading="lazy" />
+          </div>
+          <h4>水<small>WATER</small></h4>
+          <p>地下から汲み上げる軟水。湯にも、最後のひと滴の濯ぎにも、これだけを。</p>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 伍 結い手 ─── -->
+  <section id="yuite" aria-labelledby="yuite-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">伍</div>
+      <h2 id="yuite-title">
+        結い手
+        <small>OUR ARTISANS</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <div class="yuite">
+
+        <figure class="person reveal">
+          <div class="person-img">
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=82" alt="髪を後ろから結う手元のクローズアップ" loading="lazy" />
+          </div>
+          <span class="title">結い手</span>
+          <h3>椿木 縁</h3>
+          <p class="yomi">TSUBAKI YUKARI</p>
+          <p>主宰。京の祇園で日本髪を学び、その後パリで現代的なヘアセットを習得。古典結いと夜会巻きの両軸を担う。</p>
+          <figcaption>担当 ── 結いの儀、髪の儀</figcaption>
+        </figure>
+
+        <figure class="person reveal delay-1">
+          <div class="person-img">
+            <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?auto=format&fit=crop&w=800&q=82" alt="頭皮を解す手元、椿油の薫り" loading="lazy" />
+          </div>
+          <span class="title">頭浴の手</span>
+          <h3>玻璃 静</h3>
+          <p class="yomi">HARI SHIZUKA</p>
+          <p>頭皮療法の道に十四年。椿油の頭浴と薬草蒸しを軸に、深い眠りの淵まで連れていくこと。</p>
+          <figcaption>担当 ── 頭浴の儀、深掘りの頭浴</figcaption>
+        </figure>
+
+        <figure class="person reveal delay-2">
+          <div class="person-img">
+            <img src="https://images.unsplash.com/photo-1583846783214-7229a91b20ed?auto=format&fit=crop&w=800&q=82" alt="着物の帯結びの手元、布の質感" loading="lazy" />
+          </div>
+          <span class="title">纏いの手</span>
+          <h3>篠原 詩織</h3>
+          <p class="yomi">SHINOHARA SHIORI</p>
+          <p>京都の着付け教室で師範を務めた経歴。式当日朝の特別枠を一手に引き受ける、椿の纏いの要。</p>
+          <figcaption>担当 ── 纏いの儀、当日朝のお仕度</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 陸 ひとひら（随筆）─── -->
+  <section class="hitohira" aria-labelledby="hitohira-title">
+    <div class="section-head" style="border-top:none;padding-top:0">
+      <div class="ord" aria-hidden="true">陸</div>
+      <h2 id="hitohira-title">
+        ひとひら
+        <small>OWNER'S NOTES</small>
+      </h2>
+    </div>
+    <div class="hitohira-grid">
+
+      <article class="essay">
+        <div class="sho" aria-hidden="true">壹</div>
+        <div>
+          <h3>椿一輪、床に挿す</h3>
+          <p>
+            朝、店を開ける前に、必ず床の間に椿を一輪挿します。咲き切らないものを選び、葉は二枚だけ残す。何かを足すのではなく、何かを引いていく。
+          </p>
+          <p>
+            お客さまをお迎えするのは、私たち結い手の手の温度よりも先に、この一輪の椿だと、いつも感じています。
+          </p>
+          <span class="signoff">── 立春の頃に</span>
+        </div>
+      </article>
+
+      <article class="essay">
+        <div class="sho" aria-hidden="true">貳</div>
+        <div>
+          <h3>湯気の中で、髪を聴く</h3>
+          <p>
+            頭浴の最中、髪は喋ります。乾いている。ねじれている。少し疲れている ── 触れる側がそれを聴き取れるまで、本当の頭浴は始まりません。
+          </p>
+          <p>
+            ですから、最初の十分はただ湯桶の湯を当てて、髪の声を待つだけ。お客さまには、目を閉じていただきます。
+          </p>
+          <span class="signoff">── 雨水の頃に</span>
+        </div>
+      </article>
+
+      <article class="essay">
+        <div class="sho" aria-hidden="true">參</div>
+        <div>
+          <h3>結いとは、結ばないこと</h3>
+          <p>
+            日本髪を結う稽古をしていた頃、師に言われたことが今も残っています。「結ぶな。沿わせろ。髪は、引っ張られたら必ず反発する」。
+          </p>
+          <p>
+            この言葉は、髪に限らず、暮らしのほとんどに当てはまる気がするのです。椿の結いは、いつも沿わせることから始めます。
+          </p>
+          <span class="signoff">── 啓蟄の頃に</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── 漆 お代 ─── -->
+  <section id="odai" aria-labelledby="odai-title">
+    <div class="section-head">
+      <div class="ord" aria-hidden="true">漆</div>
+      <h2 id="odai-title">
+        お代
+        <small>PRICING — THREE WAYS</small>
+      </h2>
+    </div>
+    <div class="section-body">
+      <div class="odai">
+
+        <article class="plan">
+          <span class="label">一</span>
+          <h3>通常<small>STANDARD</small></h3>
+          <p class="price"><span class="yen">¥</span><span class="num">12,000</span><span class="unit">/ 一儀</span></p>
+          <ul>
+            <li>頭浴・髪・結い・纏いから一儀ご選択</li>
+            <li>九時から十八時の通常時間帯</li>
+            <li>お茶とお菓子のお時間 二十分付</li>
+            <li>椿油・木櫛は使い切りご提供</li>
+          </ul>
+          <a href="#yoyaku" class="gobi">ご予約を承ります</a>
+        </article>
+
+        <article class="plan featured">
+          <span class="label">二</span>
+          <h3>会員<small>MEMBER — YEARLY</small></h3>
+          <p class="price"><span class="yen">¥</span><span class="num">180,000</span><span class="unit">/ 年</span></p>
+          <ul>
+            <li>四つの儀すべてを年十二回まで</li>
+            <li>早暁・夜半枠の優先ご案内</li>
+            <li>季の節気に合わせた頭浴のご提案</li>
+            <li>椿の間（主室）の優先予約</li>
+          </ul>
+          <a href="#yoyaku" class="gobi">入会のお問合せ</a>
+        </article>
+
+        <article class="plan">
+          <span class="label">三</span>
+          <h3>早暁・夜半<small>DAWN &amp; NIGHT</small></h3>
+          <p class="price"><span class="yen">¥</span><span class="num">18,000</span><span class="unit">/ 一儀</span></p>
+          <ul>
+            <li>早暁 六時 〜 八時、夜半 二十時 〜 二十三時</li>
+            <li>他客と顔を合わせない静かな時間</li>
+            <li>月の間（夜半専用個室）ご案内</li>
+            <li>和ろうそく一灯の灯りでの施術</li>
+          </ul>
+          <a href="#yoyaku" class="gobi">ご予約を承ります</a>
+        </article>
+
+      </div>
+      <p class="odai-note">
+        ※ 価格はすべて税込みのご案内です。複数の儀を組み合わせる場合は、儀の合計より一割ほどお安くお取次ぎいたします。<br>
+        ※ 当日朝のお仕度（婚礼・式列席）は別途お問合せください。
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── 捌 ご予約 ─── -->
+  <section id="yoyaku" class="goyoyaku" aria-labelledby="yoyaku-title">
+    <h2 id="yoyaku-title">
+      ご予約を承ります<br>
+      <span style="font-size:.55em;letter-spacing:.42em;color:var(--shu)">RESERVATIONS</span>
+    </h2>
+    <p class="invite-lead">
+      お初めの方は、まず椿の間にて、ひとときお茶をご一緒できればと存じます。<br>
+      ご都合のよい節気を、お知らせください。
+    </p>
+    <dl class="yoyaku-info">
+      <dt>所在</dt>
+      <dd>京都市上京区 西陣 ◯ ─ 三 ─ 七<br>椿庵 ・ 二階</dd>
+      <dt>最寄</dt>
+      <dd>京都市営地下鉄 今出川駅 ・ 徒歩 七分</dd>
+      <dt>営業</dt>
+      <dd>火 〜 日 ・ <span class="num">09:00 — 23:00</span><br><small style="color:var(--rikyu);letter-spacing:.18em">（早暁 06:00 〜・夜半 〜 23:00 は予約のみ）</small></dd>
+      <dt>定休</dt>
+      <dd>月曜日、第三火曜日</dd>
+      <dt>電話</dt>
+      <dd class="num">075 — 433 — 0×××</dd>
+      <dt>受付</dt>
+      <dd>お電話・お問合せフォーム どちらも承ります</dd>
+    </dl>
+    <div class="yoyaku-actions">
+      <a href="#" class="primary">ご予約を承ります</a>
+      <a href="#">お問合せ</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="candle" aria-hidden="true"></span>
+  <div>
+    <a class="brand" href="#">
+      椿
+      <small>TSUBAKI</small>
+    </a>
+  </div>
+  <ul class="links">
+    <li>整いの順</li>
+    <li>品書き</li>
+    <li>閑室</li>
+    <li>道具と材</li>
+    <li>結い手</li>
+    <li>お代</li>
+    <li>ご予約</li>
+  </ul>
+  <div class="copyr">
+    <span class="seal" aria-hidden="true">椿</span>
+    © 令和七年 椿 TSUBAKI ─ A FICTITIOUS SALON FOR DESIGN STUDY
+  </div>
+</footer>
+
+<script>
+  // 章ごとの reveal を IntersectionObserver で遅延発火
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.animationPlayState='running';
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>{
+      el.style.animationPlayState='paused';
+      io.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
